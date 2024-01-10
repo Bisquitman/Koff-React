@@ -1,0 +1,86 @@
+/************/
+/** FOOTER **/
+/************/
+
+.footer {
+  background-color: #1c1c1c;
+  color: #fff;
+  padding: 32px 0 40px;
+
+  @media (min-width: 820px) {
+    padding-top: 40px;
+  }
+
+  // .footer__container
+  &__container {
+    display: grid;
+    grid-template-areas:
+      'logo'
+      'contacts'
+      'developer'
+      'copyright';
+    gap: 24px;
+
+    @media (min-width: 580px) {
+      grid-template-areas:
+      'logo contacts'
+      'developer .'
+      'copyright .';
+    }
+
+    @media (min-width: 820px) {
+      gap: 32px;
+    }
+  }
+
+  // .footer__link_logo
+  &__link_logo {
+    grid-area: logo;
+    justify-self: start;
+  }
+
+  // .footer__logo
+  &__logo {
+    width: 230px;
+
+    @media (min-width: 820px) {
+      width: 331px;
+    }
+  }
+
+  // .footer__contacts
+  &__contacts {
+    grid-area: contacts;
+
+    @media (min-width: 580px) {
+      justify-self: end;
+    }
+  }
+
+  // .footer__developer
+  &__developer {
+    grid-area: developer;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 180px;
+  }
+
+  // .footer__developer_item
+  &__developer_item {
+  }
+
+  // .footer__developer_link
+  &__developer_link {
+    transition: color 0.2s;
+
+    &:hover {
+      color: #780096;
+    }
+  }
+
+  // .footer__copyright
+  &__copyright {
+    grid-area: copyright;
+  }
+}
