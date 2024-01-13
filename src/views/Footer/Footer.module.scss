@@ -10,77 +10,51 @@
   @media (min-width: 820px) {
     padding-top: 40px;
   }
+}
 
-  // .footer__container
-  &__container {
-    display: grid;
-    grid-template-areas:
+.container {
+  display: grid;
+  grid-template-areas:
       'logo'
       'contacts'
       'developer'
       'copyright';
-    gap: 24px;
+  gap: 24px;
 
-    @media (min-width: 580px) {
-      grid-template-areas:
+  @media (min-width: 580px) {
+    grid-template-areas:
       'logo contacts'
       'developer .'
       'copyright .';
-    }
-
-    @media (min-width: 820px) {
-      gap: 32px;
-    }
   }
 
-  // .footer__link_logo
-  &__link_logo {
-    grid-area: logo;
-    justify-self: start;
+  @media (min-width: 820px) {
+    gap: 32px;
   }
+}
 
-  // .footer__logo
-  &__logo {
-    width: 230px;
+.logo {
+  grid-area: logo;
+  justify-self: start;
+  width: 230px;
 
-    @media (min-width: 820px) {
-      width: 331px;
-    }
+  @media (min-width: 820px) {
+    width: 331px;
   }
+}
 
-  // .footer__contacts
-  &__contacts {
-    grid-area: contacts;
+.contacts {
+  grid-area: contacts;
 
-    @media (min-width: 580px) {
-      justify-self: end;
-    }
+  @media (min-width: 580px) {
+    justify-self: end;
   }
+}
 
-  // .footer__developer
-  &__developer {
-    grid-area: developer;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    min-width: 180px;
-  }
+.developer {
+  grid-area: developer;
+}
 
-  // .footer__developer_item
-  &__developer_item {
-  }
-
-  // .footer__developer_link
-  &__developer_link {
-    transition: color 0.2s;
-
-    &:hover {
-      color: #780096;
-    }
-  }
-
-  // .footer__copyright
-  &__copyright {
-    grid-area: copyright;
-  }
+.copyright {
+  grid-area: copyright;
 }

@@ -1,8 +1,31 @@
-# React + Vite
+# Марафон — Интернет-магазин мебели Koff на React (08.01.2024 — 21.01.2024) (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## План проекта
+- В проекте используются React и React DOM для создания компонентов и управления визуальным отображением.
+    - JSX;
+    - Props;
+    - Functional Component;
+    - Hooks;
+    - List, Key;
+    - React DevTools.
 
-Currently, two official plugins are available:
+- Для управления состоянием приложения воспользуемся Redux Toolkit (RTK);
+  - React Redux;
+  - Redux-Thunk;
+  - Redux DevTools;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Vite является инструментом для быстрой разработки и сборки проектов. Мы будем использовать его в этом проекте для запуска и сборки приложения;
+
+- Для стилизации используется CSS. Будем использовать модульный css-in-react, узнаем что это такое и как это использовать в React-компонентах для создания стилей компонентов;
+
+- Для маршрутизации используем React Router;
+
+- В проекте будут реализованы:
+  - Каталог;
+  - Избранные товары;
+  - Карточки товаров;
+  - Корзина;
+
+- Данные будем получать с API для формирования страницы, получение товаров;
+- Отправка заказа на сервер;
+- Деплой проекта на бесплатный хостинг.

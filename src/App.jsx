@@ -5,10 +5,8 @@ import { Footer } from "./views/Footer/Footer.jsx";
 const App = () => (
   <>
     <Header />
-    <Main>
-      <p>Text1</p>
-    </Main>
-    <Footer>Text2</Footer>
+    <Main/>
+    <Footer/>
   </>
 );
 

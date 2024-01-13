@@ -141,9 +141,9 @@ module.exports = {
     "key-spacing": "error",
     "keyword-spacing": "error",
     "max-len": [
-      "error",
+      "warn",
       {
-        code: 120,
+        code: 999999,
         tabWidth: 2,
         ignoreUrls: true,
         ignorePattern: "goog.(module|require)",

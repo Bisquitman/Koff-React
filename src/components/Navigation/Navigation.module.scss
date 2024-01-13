@@ -1,0 +1,46 @@
+.navigation {
+  display: flex;
+  gap: 16px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-direction: row-reverse;
+  outline-offset: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+
+  &:hover, &:active {
+    color: #780096;
+  }
+
+  &:focus-visible {
+    color: #780096;
+    outline-color: #780096;
+  }
+
+  @media (min-width: 580px) {
+    flex-direction: row;
+  }
+}
+
+.text {
+  position: fixed;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  
+  @media (min-width: 580px) {
+    position: unset;
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+  }
+}

@@ -1,0 +1,109 @@
+.card {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.link {
+  outline-offset: 4px;
+  transition: color 0.2s;
+
+  &:hover {
+    color: #780096;
+  }
+
+  &:focus-visible {
+    outline-color: #780096;
+  }
+
+  // .card__link_img
+  &_img {
+    display: block;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    outline-offset: 0;
+
+    &:focus-visible {
+      outline-color: #780096;
+    }
+
+    @media (min-width: 580px) {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 7 / 6;
+
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition: transform 0.3s ease-in-out;
+  -ms-transition: transform 0.3s ease-in-out;
+  -o-transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (min-width: 580px) {
+    aspect-ratio: 23 / 20;
+  }
+
+  @media (min-width: 820px) {
+    aspect-ratio: 302 / 250;
+  }
+}
+
+.info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+
+  @media (min-width: 580px) {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 4px;
+
+  @media (min-width: 580px) {
+    font-size: 16px;
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+}
+
+.price {
+  font-size: 16px;
+  margin-top: auto;
+
+  @media (min-width: 580px) {
+    font-size: 20px;
+    margin-top: 0;
+  }
+}
+
+.btn {
+}
+
+.favorite {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  outline-offset: 3px;
+
+  &:focus-visible {
+    outline-color: #780096;
+  }
+}

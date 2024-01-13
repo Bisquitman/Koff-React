@@ -1,4 +1,8 @@
-import logo from "../../../public/img/logo.svg";
+import logoImg from "../../../public/img/logo.svg";
+import s from "./Logo.module.scss";
+
 export const Logo = () => (
-  <div><img src={logo} alt="Logo"/></div>
+  <a href="./" className={s.link}>
+    <img className={s.img} src={logoImg} alt="Логотип сайта Koff" />
+  </a>
 );

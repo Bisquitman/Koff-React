@@ -1,0 +1,14 @@
+.img {
+  width: 100%;
+}
+
+.link {
+  outline-offset: 4px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+
+  &:focus-visible {
+    outline-color: #780096;
+  }
+}

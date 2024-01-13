@@ -1,12 +1,14 @@
 .header {
-
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #eeeff2;
 }
 
 .container {
   display: grid;
   gap: 16px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   grid-template-areas:
     "logo navigation"
     "search search";
@@ -19,12 +21,24 @@
 
 .logo {
   grid-area: logo;
+  width: 94px;
 }
 
 .search {
   grid-area: search;
+  width: 100%;
+
+  @media (min-width: 820px) {
+    max-width: 408px;
+    justify-self: center;
+  }
+
+  @media (min-width: 1120px) {
+    max-width: 514px;
+  }
 }
 
 .navigation {
   grid-area: navigation;
+  justify-self: end;
 }
