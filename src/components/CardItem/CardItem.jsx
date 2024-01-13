@@ -4,7 +4,7 @@ import { CardButton } from "../CardButton/CardButton.jsx";
 export const CardItem = () => (
   <article className={s.card}>
     <a className={`${s.link} ${s.link_img}`} href="/product/id">
-      <img className={s.image} src="../../../public/img/goods-img.jpg"
+      <img className={s.image} src="./img/goods-img.jpg"
         alt="Диван-кровать ИТАЛИЯ Muse Confortplus" title="Диван-кровать ИТАЛИЯ Muse Confortplus" width="302"
         height="250"/>
     </a>
