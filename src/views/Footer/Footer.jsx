@@ -8,15 +8,15 @@ export const Footer = () => (
   <footer className={s.footer}>
     <Container className={s.container}>
       <div className={s.logo}>
-        <Logo/>
+        <Logo />
       </div>
 
       <div className={s.contacts}>
-        <Contacts/>
+        <Contacts />
       </div>
 
       <div className={s.developer}>
-        <Developer/>
+        <Developer />
       </div>
 
       <p className={s.copyright}>&copy;&nbsp;Koff,&nbsp;2024</p>

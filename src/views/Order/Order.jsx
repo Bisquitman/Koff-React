@@ -33,7 +33,9 @@ export const Order = () => (
           <td className="table__value">Доставка</td>
         </tr>
       </table>
-      <a className="order__btn btn btn_filled" href="/">На главную</a>
+      <a className="order__btn btn btn_filled" href="/">
+        На главную
+      </a>
     </div>
   </>
 );

@@ -1,15 +1,18 @@
 # Марафон — Интернет-магазин мебели Koff на React (08.01.2024 — 21.01.2024) (React + Vite)
 
 ## План проекта
+
 - В проекте используются React и React DOM для создания компонентов и управления визуальным отображением.
-    - JSX;
-    - Props;
-    - Functional Component;
-    - Hooks;
-    - List, Key;
-    - React DevTools.
+
+  - JSX;
+  - Props;
+  - Functional Component;
+  - Hooks;
+  - List, Key;
+  - React DevTools.
 
 - Для управления состоянием приложения воспользуемся Redux Toolkit (RTK);
+
   - React Redux;
   - Redux-Thunk;
   - Redux DevTools;
@@ -21,6 +24,7 @@
 - Для маршрутизации используем React Router;
 
 - В проекте будут реализованы:
+
   - Каталог;
   - Избранные товары;
   - Карточки товаров;

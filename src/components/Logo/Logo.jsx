@@ -1,4 +1,4 @@
-import logoImg from "../../../public/img/logo.svg";
+import logoImg from "./logo.svg";
 import s from "./Logo.module.scss";
 
 export const Logo = () => (
