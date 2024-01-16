@@ -1,11 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { API_URL_CATEGORIES } from "../../consts.js";
+import { API_URL } from "../../consts.js";
 
-export const fetchCategories = createAsyncThunk("categories/fetchCategories", async (arg, thunkAPI) => {
+export const fetchCategories = createAsyncThunk("categories/fetchCategories", async (_, thunkAPI) => {
   const state = thunkAPI.getState();
   const token = state.auth.accessToken;
 
-  const response = await fetch(API_URL_CATEGORIES, {
+  const response = await fetch(`${API_URL}/api/productCategories`, {
     headers: {
       Authorization: `Bearer ${token}`,
     },

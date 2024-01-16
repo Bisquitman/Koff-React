@@ -1,33 +1,40 @@
 import s from "./CardItem.module.scss";
-import { CardButton } from "../CardButton/CardButton.jsx";
-import { BASE_URL } from "../../consts.js";
+import { API_URL } from "../../consts.js";
+import { Link } from "react-router-dom";
 
-export const CardItem = ({ data }) => (
+export const CardItem = ({ id, images: [image], name, price }) => (
   <article className={s.card}>
-    <a className={`${s.link} ${s.link_img}`} href={`/product/${data.id}`}>
+    <Link className={`${s.link} ${s.link_img}`} to={`/product/${id}`}>
       <img
         className={s.image}
-        src={`${BASE_URL}/${data.images[0].replace("img//", "img/")}`}
-        alt={data.name}
-        title={data.name}
+        src={`${API_URL}/${image.replace("img//", "img/")}`}
+        alt={name}
+        title={name}
         width="302"
         height="250"
       />
-    </a>
+    </Link>
     <div className={s.info}>
       <h3 className={s.title}>
-        <a className={s.link} href={`/product/${data.id}`}>
-          {data.name}
-        </a>
+        <Link className={s.link} to={`/product/${id}`}>
+          {name}
+        </Link>
       </h3>
-      <p className={s.price}>{data.price.toLocaleString()}&nbsp;&#8381;</p>
+      <p className={s.price}>{price.toLocaleString()}&nbsp;&#8381;</p>
     </div>
 
-    <CardButton data={data} />
+    <button
+      className={`${s.btn} btn`}
+      data-id={id}
+      type="button"
+      aria-label="Добавить в корзину"
+      title="Добавить в корзину">
+      В корзину
+    </button>
 
     <button
       className={`${s.favorite} favorite-btn`}
-      data-id={data.id}
+      data-id={id}
       type="button"
       aria-label="Добавить в Избранное"
       title="Добавить в Избранное">

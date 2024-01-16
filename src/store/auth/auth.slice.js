@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ACCESS_TOKEN_KEY, API_URL_ACCESSKEY } from "../../consts.js";
+import { ACCESS_TOKEN_KEY, API_URL } from "../../consts.js";
 
 export const fetchAccessToken = createAsyncThunk("auth/fetchAccessToken", async () => {
-  const response = await fetch(API_URL_ACCESSKEY);
+  const response = await fetch(`${API_URL}/api/users/accessKey`);
 
   if (!response.ok) {
     throw new Error("Не удалось получить токен доступа");
