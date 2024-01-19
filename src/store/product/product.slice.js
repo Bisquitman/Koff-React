@@ -1,30 +1,28 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { API_URL } from "../../consts.js";
 
-export const fetchProduct = createAsyncThunk(
-  "product/fetchProduct",
-  async (id, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const token = state.auth.accessToken;
+export const fetchProduct = createAsyncThunk("product/fetchProduct", async (id, thunkAPI) => {
+  const state = thunkAPI.getState();
+  const token = state.auth.accessToken;
 
-    const response = await fetch(`${API_URL}/api/products/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    if (!response.ok) {
-      if (response.status === 401) {
-        return thunkAPI.rejectWithValue({
-          status: response.status,
-          error: "Не удалось получить данные о продукте",
-        });
-      }
-      throw new Error("Не удалось получить данные о продукте");
-    }
-
-    return await response.json();
+  const response = await fetch(`${API_URL}/api/products/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
+
+  if (!response.ok) {
+    if (response.status === 401) {
+      return thunkAPI.rejectWithValue({
+        status: response.status,
+        error: "Не удалось получить данные о продукте",
+      });
+    }
+    throw new Error("Не удалось получить данные о продукте");
+  }
+
+  return await response.json();
+});
 
 const initialState = {
   data: null,
