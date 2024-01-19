@@ -10,6 +10,7 @@ import { Order } from "./views/Order/Order.jsx";
 import { Cart } from "./components/Cart/Cart.jsx";
 import { Card } from "./components/Card/Card.jsx";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
+import { Container } from "./views/Container/Container.jsx";
 
 const router = createBrowserRouter([
   {
@@ -118,7 +119,11 @@ const App = () => {
   }, [dispatch, accessToken]);
 
   if (loading) {
-    return <div>Загрузка</div>;
+    return (
+      <Container>
+        <div>Загрузка...</div>;
+      </Container>
+    );
   }
 
   return <RouterProvider router={router} />;

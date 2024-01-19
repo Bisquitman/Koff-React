@@ -22,7 +22,7 @@ export const NotFound = () => (
         {/*  </Link>*/}
         {/* </p>*/}
         <Link className={`${s.link} btn btn_filled`} to="/">
-            На главную
+          На главную
         </Link>
       </div>
     </section>
