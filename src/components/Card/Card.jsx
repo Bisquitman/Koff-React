@@ -34,13 +34,13 @@ export const Card = () => {
   return (
     <section className={s.card}>
       <Container className={s.container}>
-        <h2 className={s.title}>{data.name}</h2>
+        <h2 className={s.title}>{data?.name}</h2>
 
         <Slider images={data?.images} name={data?.name} />
 
         <div className={s.info}>
-          <p className={s.price}>{data.price.toLocaleString()}&nbsp;&#8381;</p>
-          <p className={s.article}>арт. {data.article}</p>
+          <p className={s.price}>{data?.price.toLocaleString()}&nbsp;&#8381;</p>
+          <p className={s.article}>арт. {data?.article}</p>
 
           <div className={s.characteristics}>
             <h3 className={s.characteristicsTitle}>Общие характеристики</h3>
@@ -48,7 +48,7 @@ export const Card = () => {
 
           <table className={s.characteristicsTable}>
             <tbody>
-              {data.characteristics.map((item, i) => (
+              {data?.characteristics.map((item, i) => (
                 <tr key={i} className={s.tableRow}>
                   <td className={s.tableField}>{item[0]}</td>
                   <td className={s.tableValue}>{item[1]}</td>
