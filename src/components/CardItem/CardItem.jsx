@@ -1,6 +1,8 @@
 import s from "./CardItem.module.scss";
 import { API_URL } from "../../consts.js";
 import { Link } from "react-router-dom";
+import { FavoriteButton } from "../FavoriteButton/FavoriteButton.jsx";
+import classNames from "classnames";
 
 export const CardItem = ({ id, images: [image], name, price }) => (
   <article className={s.card}>
@@ -24,7 +26,7 @@ export const CardItem = ({ id, images: [image], name, price }) => (
     </div>
 
     <button
-      className={`${s.btn} btn`}
+      className={classNames(s.btn, "btn")}
       data-id={id}
       type="button"
       aria-label="Добавить в корзину"
@@ -32,25 +34,6 @@ export const CardItem = ({ id, images: [image], name, price }) => (
       В корзину
     </button>
 
-    <button
-      className={`${s.favorite} favorite-btn`}
-      data-id={id}
-      type="button"
-      aria-label="Добавить в Избранное"
-      title="Добавить в Избранное">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="favorite-icon"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="white">
-        <path
-          d="M8.41337 13.8733C8.18671 13.9533 7.81337 13.9533 7.58671 13.8733C5.65337 13.2133 1.33337 10.46 1.33337 5.79332C1.33337 3.73332 2.99337 2.06665 5.04004 2.06665C6.25337 2.06665 7.32671 2.65332 8.00004 3.55998C8.67337 2.65332 9.75337 2.06665 10.96 2.06665C13.0067 2.06665 14.6667 3.73332 14.6667 5.79332C14.6667 10.46 10.3467 13.2133 8.41337 13.8733Z"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"></path>
-      </svg>
-    </button>
+    <FavoriteButton className={s.favorite} id={id} />
   </article>
 );

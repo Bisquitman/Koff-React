@@ -34,7 +34,7 @@ export const Catalog = () => {
         <ul className={s.list}>
           {data.map((item, i) => (
             <li className={s.item} key={i}>
-              <Link className={s.link} to={`/category?slug=${item}`}>
+              <Link className={s.link} to={`/category?category=${item}`}>
                 {item}
               </Link>
             </li>
