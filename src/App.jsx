@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
-          <Goods isFavorites={false} />
+          <Goods />
         </main>
         <Footer />
       </>
@@ -33,7 +33,7 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
-          <Goods isFavorites={true} />
+          <Goods />
         </main>
         <Footer />
       </>

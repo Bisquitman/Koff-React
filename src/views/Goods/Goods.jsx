@@ -2,23 +2,37 @@ import s from "./Goods.module.scss";
 import { Container } from "../Container/Container.jsx";
 import { CardItem } from "../../components/CardItem/CardItem.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchProducts } from "../../store/products/products.slice.js";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { Pagination } from "../../components/Pagination/Pagination.jsx";
 
-export const Goods = ({ isFavorites }) => {
+export const Goods = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
+  const { data, loading, error, pagination } = useSelector((state) => state.products);
+  const favoriteList = useSelector((state) => state.favorite.favoriteList.join(","));
+  const { pathname } = useLocation();
+
   const category = searchParams.get("category");
   const q = searchParams.get("search");
-  const favoriteList = useSelector((state) => state.favorite.favoriteList).join(",");
-  const list = isFavorites ? favoriteList : null;
+  const page = searchParams.get("page");
 
-  const { data, loading, error } = useSelector((state) => state.products);
+  const [isFavoritePage, setIsFavoritePage] = useState(false);
 
   useEffect(() => {
-    dispatch(fetchProducts({ category, q, list }));
-  }, [category, dispatch, list, q]);
+    if (pathname !== "/favorite") {
+      dispatch(fetchProducts({ category, q, page }));
+      setIsFavoritePage(false);
+    }
+  }, [category, dispatch, page, pathname, q]);
+
+  useEffect(() => {
+    if (pathname === "/favorite") {
+      dispatch(fetchProducts({ list: favoriteList, page }));
+      setIsFavoritePage(true);
+    }
+  }, [dispatch, favoriteList, page, pathname]);
 
   if (loading) {
     return (
@@ -38,15 +52,24 @@ export const Goods = ({ isFavorites }) => {
   return (
     <section className={s.goods}>
       <Container>
-        <h2 className={`${s.title} visually-hidden`}>{isFavorites ? "Избранное" : "Список товаров"}</h2>
+        <h2 className={`${s.title} ${isFavoritePage || "visually-hidden"}`}>
+          {isFavoritePage ? "Избранное" : "Список товаров"}
+        </h2>
+
         {data?.length ? (
-          <ul className={s.list}>
-            {data.map((item) => (
-              <li key={item.id}>
-                <CardItem {...item} />
-              </li>
-            ))}
-          </ul>
+          <>
+            <ul className={s.list}>
+              {data.map((item) => (
+                <li key={item.id}>
+                  <CardItem {...item} />
+                </li>
+              ))}
+            </ul>
+
+            {pagination ? <Pagination pagination={pagination} /> : ""}
+          </>
+        ) : isFavoritePage ? (
+          <h3 className={s.empty}>В Избранном ничего нет...</h3>
         ) : (
           <h3 className={s.empty}>По вашему запросу ничего не найдено...</h3>
         )}

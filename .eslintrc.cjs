@@ -170,7 +170,7 @@ module.exports = {
         const: "never",
       },
     ],
-    "operator-linebreak": ["error", "after"],
+    // "operator-linebreak": ["error", "after"],
     "padded-blocks": ["error", "never"],
     "quote-props": ["error", "consistent"],
     "quotes": [
