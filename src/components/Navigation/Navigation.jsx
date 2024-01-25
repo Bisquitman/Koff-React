@@ -1,19 +1,33 @@
+import { useDispatch, useSelector } from "react-redux";
 import s from "./Navigation.module.scss";
 import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { fetchCart } from "../../store/cart/cart.slice.js";
 
 export const Navigation = () => {
   const location = useLocation();
   const isFavoritePage = location.pathname === "/favorite";
+  const totalCount = useSelector((state) => state.cart.totalCount);
+  const dispatch = useDispatch();
+  const [hover, setHover] = useState(false);
+
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [dispatch]);
 
   return (
     <nav className={s.navigation}>
-      <Link className={s.link} to="/favorite">
+      <Link
+        className={s.link} to="/favorite"
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
         <span className={s.text}>Избранное</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path
             d="M8.41325 13.8733C8.18658 13.9533 7.81325 13.9533 7.58659 13.8733C5.65325 13.2133 1.33325 10.46 1.33325 5.79332C1.33325 3.73332 2.99325 2.06665 5.03992 2.06665C6.25325 2.06665 7.32658 2.65332 7.99992 3.55998C8.67325 2.65332 9.75325 2.06665 10.9599 2.06665C13.0066 2.06665 14.6666 3.73332 14.6666 5.79332C14.6666 10.46 10.3466 13.2133 8.41325 13.8733Z"
             fill={isFavoritePage ? "#780096" : "white"}
-            stroke={isFavoritePage ? "#780096" : "#1c1c1c"}
+            stroke={(isFavoritePage || hover) ? "#780096" : "#1c1c1c"}
             strokeLinecap="round"
             strokeLinejoin="round"
           />
@@ -21,7 +35,7 @@ export const Navigation = () => {
       </Link>
       <Link className={s.link} to="/cart">
         <span className={s.text}>Корзина</span>
-        <span>(0)</span>
+        <span>({totalCount})</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M5.87329 1.33325L3.45996 3.75325"

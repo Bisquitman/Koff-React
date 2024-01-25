@@ -1,0 +1,53 @@
+.place {
+  grid-area: place;
+  padding-top: 25px;
+
+  @media (min-width: 820px) {
+    padding-top: 0;
+  }
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 16px;
+
+  &_formOrder {
+    grid-column: 1/-1;
+  }
+
+  @media (min-width: 480px) {
+    font-size: 20px;
+  }
+}
+
+.placeInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+
+  @media (min-width: 480px) {
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+}
+
+.placeCount {
+}
+
+.placePrice {
+}
+
+.placeDelivery {
+  color: #969eae;
+  font-size: 9px;
+  margin-bottom: 8px;
+
+  @media (min-width: 480px) {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+}
+
+.placeBtn {
+}

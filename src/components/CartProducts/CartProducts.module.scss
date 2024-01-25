@@ -1,49 +1,3 @@
-.cart {
-  padding-top: 24px;
-
-  @media (min-width: 580px) {
-    padding-top: 32px;
-  }
-
-  @media (min-width: 820px) {
-    padding-top: 40px;
-  }
-}
-.container {
-  display: grid;
-  grid-template-areas: 'title' 'content' 'form' 'place';
-
-  @media (min-width: 880px) {
-    grid-template-columns: 1fr 302px;
-    gap: 40px 30px;
-    grid-template-areas:
-            'title title'
-            'content place'
-            'form form';
-    justify-content: space-between;
-  }
-
-  @media (min-width: 1080px) {
-    grid-template-columns: 1fr 408px;
-  }
-}
-
-.title {
-  grid-area: title;
-  font-size: 24px;
-  font-weight: 700;
-  margin-bottom: 24px;
-
-  @media (min-width: 580px) {
-    font-size: 32px;
-    margin-bottom: 24px;
-  }
-
-  @media (min-width: 880px) {
-    margin-bottom: 0;
-  }
-}
-
 .products {
   grid-area: content;
   margin-bottom: 24px;
@@ -96,7 +50,7 @@
   border-radius: 16px;
 }
 
-.title-product {
+.titleProduct {
   grid-area: title;
   font-size: 12px;
   font-style: normal;
@@ -130,7 +84,7 @@
   }
 }
 
-.product-controls {
+.productControls {
   grid-area: controls;
   justify-self: start;
   display: flex;
@@ -146,7 +100,7 @@
   }
 }
 
-.product-btn {
+.productBtn {
   width: 14px;
   height: 14px;
   line-height: 14px;
@@ -158,83 +112,7 @@
   }
 }
 
-.product-count {
+.productCount {
   min-width: 14px;
   text-align: center;
-}
-
-.place {
-  grid-area: place;
-  padding-top: 25px;
-
-  @media (min-width: 820px) {
-    padding-top: 0;
-  }
-}
-
-.subtitle {
-  font-size: 16px;
-  font-weight: 400;
-  margin-bottom: 16px;
-
-  &_form-order {
-    grid-column: 1/-1;
-  }
-
-  @media (min-width: 480px) {
-    font-size: 20px;
-  }
-}
-
-.place-info {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 32px;
-
-  @media (min-width: 480px) {
-    font-size: 16px;
-    margin-bottom: 40px;
-  }
-}
-
-.place-count {
-}
-
-.place-price {
-}
-
-.place-delivery {
-  color: #969eae;
-  font-size: 9px;
-  margin-bottom: 8px;
-
-  @media (min-width: 480px) {
-    font-size: 12px;
-    margin-bottom: 12px;
-  }
-}
-
-.place-btn {
-}
-
-.form {
-  grid-area: form;
-  padding-top: 30px;
-  padding-bottom: 25px;
-
-  @media (min-width: 580px) {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  @media (min-width: 880px) {
-    padding-bottom: 0;
-  }
-}
-
-.empty {
-  grid-column: 1 / -1;
-  text-align: center;
-  font-size: 150%;
-  margin-bottom: calc(28 / 18 * 1em);
 }
