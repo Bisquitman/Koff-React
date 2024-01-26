@@ -44,4 +44,3 @@ export const FavoriteButton = ({ className, id }) => {
     </button>
   );
 };
-// 43:19

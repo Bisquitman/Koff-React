@@ -120,6 +120,7 @@ const cartSlice = createSlice({
         state.products = action.payload;
         state.loadingAdd = false;
         state.error = null;
+        state.totalCount = action.payload.totalCount;
       })
       .addCase(addProductToCart.rejected, (state, action) => {
         state.loadingAdd = false;

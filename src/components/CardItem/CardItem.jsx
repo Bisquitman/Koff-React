@@ -3,6 +3,7 @@ import { API_URL } from "../../consts.js";
 import { Link } from "react-router-dom";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton.jsx";
 import classNames from "classnames";
+import {AddCartButton} from "../AddCartButton/AddCartButton.jsx";
 
 export const CardItem = ({ id, images: [image], name, price }) => (
   <article className={s.card}>
@@ -25,14 +26,7 @@ export const CardItem = ({ id, images: [image], name, price }) => (
       <p className={s.price}>{price.toLocaleString()}&nbsp;&#8381;</p>
     </div>
 
-    <button
-      className={classNames(s.btn, "btn")}
-      data-id={id}
-      type="button"
-      aria-label="Добавить в корзину"
-      title="Добавить в корзину">
-      В корзину
-    </button>
+    <AddCartButton className={classNames(s.btn, "btn")} id={id} />
 
     <FavoriteButton className={s.favorite} id={id} />
   </article>
