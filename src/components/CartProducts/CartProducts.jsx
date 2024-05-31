@@ -1,56 +1,57 @@
 import s from "./CartProducts.module.scss";
+import { useDispatch } from "react-redux";
+import { API_URL } from "../../consts.js";
+import { removeProductFromCart, updateProductInCart } from "../../store/cart/cart.slice.js";
 
-export const CartProducts = () => {
+export const CartProducts = ({ products }) => {
+  console.log("products", products);
+  const dispatch = useDispatch();
+
+  const handleMinus = (id, quantity) => {
+    if (quantity > 1) {
+      dispatch(updateProductInCart({
+        productId: id,
+        quantity: quantity - 1
+      }));
+    } else {
+      dispatch(removeProductFromCart(id));
+    }
+  };
+
+  const handlePlus = (id, quantity) => {
+    dispatch(updateProductInCart({
+      productId: id,
+      quantity: quantity + 1
+    }));
+  };
+
   return (
     <ul className={s.products}>
-      <li key={1} className={s.product}>
-        <img
-          className={s.img}
-          src="https://koff-api.vercel.app/img/1hb1m6ltcqiuugd5.jpg"
-          alt="Тумба в ванную с раковиной подвесная"
-        />
-        <h3 className={s.titleProduct}>Тумба в ванную с раковиной подвесная</h3>
-        <p className={s.price}>{parseInt("6685").toLocaleString()}&nbsp;₽</p>
-        <p className={s.article}>арт. 16954522818</p>
+      {products.map(({ id, images: [image], name, price, article, quantity }) => (
+        <li key={id} className={s.product}>
+          <img
+            className={s.img}
+            src={ `${API_URL}/${image.replace("img//", "img/")}` }
+            alt={ name }
+            title={ name }
+          />
+          <h3 className={s.titleProduct}>{name}</h3>
+          <p className={s.price}>{parseInt(price).toLocaleString()}&nbsp;₽</p>
+          <p className={s.article}>арт.&nbsp;{article}</p>
 
-        <div className={s.productControls}>
-          <button className={s.productBtn}>-</button>
-          <p className={s.productCount}>3</p>
-          <button className={s.productBtn}>+</button>
-        </div>
-      </li>
-      <li key={2} className={s.product}>
-        <img
-          className={s.img}
-          src="https://koff-api.vercel.app/img/1hb1m6ltcqiuugd5.jpg"
-          alt="Тумба в ванную с раковиной подвесная"
-        />
-        <h3 className={s.titleProduct}>Тумба в ванную с раковиной подвесная</h3>
-        <p className={s.price}>{parseInt("6685").toLocaleString()}&nbsp;₽</p>
-        <p className={s.article}>арт. 16954522818</p>
-
-        <div className={s.productControls}>
-          <button className={s.productBtn}>-</button>
-          <p className={s.productCount}>1</p>
-          <button className={s.productBtn}>+</button>
-        </div>
-      </li>
-      <li key={3} className={s.product}>
-        <img
-          className={s.img}
-          src="https://koff-api.vercel.app/img/1hb1m6ltcqiuugd5.jpg"
-          alt="Тумба в ванную с раковиной подвесная"
-        />
-        <h3 className={s.titleProduct}>Тумба в ванную с раковиной подвесная</h3>
-        <p className={s.price}>{parseInt("6685").toLocaleString()}&nbsp;₽</p>
-        <p className={s.article}>арт. 16954522818</p>
-
-        <div className={s.productControls}>
-          <button className={s.productBtn}>-</button>
-          <p className={s.productCount}>2</p>
-          <button className={s.productBtn}>+</button>
-        </div>
-      </li>
+          <div className={s.productControls}>
+            <button
+              className={s.productBtn}
+              onClick={() => handleMinus(id, quantity)}
+            >-</button>
+            <p className={s.productCount}>{quantity}</p>
+            <button
+              className={s.productBtn}
+              onClick={() => handlePlus(id, quantity)}
+            >+</button>
+          </div>
+        </li>
+      ))}
     </ul>
   );
 };

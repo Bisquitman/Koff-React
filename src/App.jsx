@@ -6,11 +6,12 @@ import { fetchAccessToken } from "./store/auth/auth.slice.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Catalog } from "./views/Catalog/Catalog.jsx";
 import { Goods } from "./views/Goods/Goods.jsx";
-import { Order } from "./views/Order/Order.jsx";
+import { Order } from "./components/Order/Order.jsx";
 import { Cart } from "./views/Cart/Cart.jsx";
 import { Card } from "./components/Card/Card.jsx";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
 import { Container } from "./views/Container/Container.jsx";
+import { Breadcrumbs } from "./components/Breadcrumbs/Breadcrumbs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,7 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
+          <Breadcrumbs/>
           <Goods />
         </main>
         <Footer />
@@ -96,6 +98,7 @@ const router = createBrowserRouter([
         <Header />
         <main>
           <Catalog />
+          <Breadcrumbs/>
           <Card />
         </main>
         <Footer />

@@ -1,12 +1,20 @@
-import { useDispatch } from "react-redux";
-import { addProductToCart } from "../../store/cart/cart.slice.js";
+import { useDispatch, useSelector } from "react-redux";
+import { addProductToCart, removeProductFromCart } from "../../store/cart/cart.slice.js";
 
 export const AddCartButton = ({ className, id }) => {
   const dispatch = useDispatch();
+  const product = useSelector((state) => state.cart.products);
+
+  const isCart = product.find(item => item.id === id);
 
   const handlerAddToCart = (e) => {
     e.preventDefault();
-    dispatch(addProductToCart({ productId: id, quantity: 1 }));
+
+    if (!isCart) {
+      dispatch(addProductToCart({ productId: id, quantity: 1 }));
+    } else {
+      dispatch(removeProductFromCart(id));
+    }
   };
 
   return (
@@ -14,11 +22,11 @@ export const AddCartButton = ({ className, id }) => {
       className={className}
       data-id={id}
       type="button"
-      aria-label="Добавить в корзину"
-      title="Добавить в корзину"
+      aria-label={isCart ? "Удалить из корзины" : "Добавить в корзину"}
+      title={isCart ? "Удалить из корзины" : "Добавить в корзину"}
       onClick={handlerAddToCart}
     >
-      В корзину
+      {isCart ? "В корзине" : "В корзину"}
     </button>
   );
 };

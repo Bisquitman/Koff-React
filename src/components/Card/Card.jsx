@@ -7,6 +7,7 @@ import { Slider } from "../Slider/Slider.jsx";
 import { fetchProduct } from "../../store/product/product.slice.js";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton.jsx";
 import classNames from "classnames";
+import { AddCartButton } from "../AddCartButton/AddCartButton.jsx";
 
 export const Card = () => {
   const { productId } = useParams();
@@ -67,7 +68,7 @@ export const Card = () => {
           </div>
 
           <div className={s.btns}>
-            <button className={classNames(s.btn, "btn", "btn_filled")}>В корзину</button>
+            <AddCartButton className={classNames(s.btn, "btn", "btn_filled")} id={data?.id} />
             <FavoriteButton className={s.like} id={data?.id} />
           </div>
         </div>

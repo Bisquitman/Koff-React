@@ -3,7 +3,7 @@ import { API_URL } from "../../consts.js";
 import { Link } from "react-router-dom";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton.jsx";
 import classNames from "classnames";
-import {AddCartButton} from "../AddCartButton/AddCartButton.jsx";
+import { AddCartButton } from "../AddCartButton/AddCartButton.jsx";
 
 export const CardItem = ({ id, images: [image], name, price }) => (
   <article className={s.card}>

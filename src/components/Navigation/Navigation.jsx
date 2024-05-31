@@ -5,15 +5,16 @@ import { useEffect, useState } from "react";
 import { fetchCart } from "../../store/cart/cart.slice.js";
 
 export const Navigation = () => {
-  const location = useLocation();
-  const isFavoritePage = location.pathname === "/favorite";
-  const totalCount = useSelector((state) => state.cart.totalCount);
   const dispatch = useDispatch();
-  const [hover, setHover] = useState(false);
+  const product = useSelector((state) => state.cart.products);
 
   useEffect(() => {
     dispatch(fetchCart());
   }, [dispatch]);
+
+  const location = useLocation();
+  const isFavoritePage = location.pathname === "/favorite";
+  const [hover, setHover] = useState(false);
 
   return (
     <nav className={s.navigation}>
@@ -35,7 +36,7 @@ export const Navigation = () => {
       </Link>
       <Link className={s.link} to="/cart">
         <span className={s.text}>Корзина</span>
-        <span>({totalCount})</span>
+        <span>({product.length})</span>
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M5.87329 1.33325L3.45996 3.75325"
