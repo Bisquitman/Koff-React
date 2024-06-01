@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
-  console.log("cart", cart);
+
   if (!cart?.totalCount) {
     return (
       <section className={s.cart}>

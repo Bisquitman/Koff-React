@@ -8,6 +8,7 @@ import { fetchProduct } from "../../store/product/product.slice.js";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton.jsx";
 import classNames from "classnames";
 import { AddCartButton } from "../AddCartButton/AddCartButton.jsx";
+import { Preloader } from "../Preloader/Preloader.jsx";
 
 export const Card = () => {
   const { productId } = useParams();
@@ -21,7 +22,7 @@ export const Card = () => {
   if (loading) {
     return (
       <Container>
-        <div>Загрузка...</div>
+        <Preloader/>
       </Container>
     );
   }
@@ -49,7 +50,7 @@ export const Card = () => {
         <Slider images={data?.images} name={data?.name} />
 
         <div className={s.info}>
-          <p className={s.price}>{data?.price.toLocaleString()}&nbsp;&#8381;</p>
+          <p className={s.price}>{data?.price?.toLocaleString()}&nbsp;&#8381;</p>
           <p className={s.article}>арт. {data?.article}</p>
 
           <div className={s.characteristics}>
@@ -57,7 +58,7 @@ export const Card = () => {
 
             <table className={s.characteristicsTable}>
               <tbody>
-                {data?.characteristics.map((item, i) => (
+                {data?.characteristics?.map((item, i) => (
                   <tr key={i} className={s.tableRow}>
                     <td className={s.tableField}>{item[0]}</td>
                     <td className={s.tableValue}>{item[1]}</td>

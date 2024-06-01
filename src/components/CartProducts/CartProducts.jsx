@@ -4,7 +4,6 @@ import { API_URL } from "../../consts.js";
 import { removeProductFromCart, updateProductInCart } from "../../store/cart/cart.slice.js";
 
 export const CartProducts = ({ products }) => {
-  console.log("products", products);
   const dispatch = useDispatch();
 
   const handleMinus = (id, quantity) => {
