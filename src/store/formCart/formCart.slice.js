@@ -23,7 +23,7 @@ export const submitCartForm = createAsyncThunk(
 
       const responseData = await response.json();
       return responseData.orderId;
-    } catch (e) {
+    } catch (error) {
       return rejectedWithValue(error.message);
     }
   }
