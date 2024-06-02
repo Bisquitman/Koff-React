@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Slider } from "../Slider/Slider.jsx";
-import { fetchProduct } from "../../store/product/product.slice.js";
+import { clearProduct, fetchProduct } from "../../store/product/product.slice.js";
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton.jsx";
 import classNames from "classnames";
 import { AddCartButton } from "../AddCartButton/AddCartButton.jsx";
@@ -17,6 +17,10 @@ export const Card = () => {
 
   useEffect(() => {
     dispatch(fetchProduct(productId));
+
+    return () => {
+      dispatch(clearProduct());
+    };
   }, [dispatch, productId]);
 
   if (loading) {

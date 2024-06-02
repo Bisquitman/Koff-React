@@ -64,13 +64,11 @@ export const CartForm = () => {
           />
           {errors.address && <p className={s.error}>* Это поле обязательно для заполнения</p>}
         </label>
-        <label className={s.textareaLabel}>
-          <textarea
-            className={s.textarea}
-            placeholder="Комментарий к заказу"
-            {...register("comments")}
-          ></textarea>
-        </label>
+        <textarea
+          className={s.textarea}
+          placeholder="Комментарий к заказу"
+          {...register("comments")}
+        ></textarea>
       </fieldset>
 
       <fieldset className={s.fieldsetRadio}>

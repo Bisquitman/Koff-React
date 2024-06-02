@@ -82,14 +82,6 @@
   }
 }
 
-.textareaLabel {
-
-  @media (min-width: 580px) {
-    grid-column: 1/-1;
-  }
-
-}
-
 .textarea {
   width: 100%;
   min-height: 120px;
@@ -106,6 +98,10 @@
 
   &:hover, &:focus-visible, &:focus {
     border-color: #dfe3eb;
+  }
+
+  @media (min-width: 580px) {
+    grid-column: 1/-1;
   }
 }
 
