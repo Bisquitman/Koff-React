@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCategories } from "../../store/categories/categories.slice.js";
 import { Link } from "react-router-dom";
+import { Loader } from "../../components/Loader/Loader.jsx";
 
 export const Catalog = () => {
   const dispatch = useDispatch();
@@ -15,14 +16,12 @@ export const Catalog = () => {
 
   if (loading) {
     return (
-      <Container>
-        <div>Загрузка...</div>
-      </Container>
+      <Loader/>
     );
   }
   if (error) {
     return (
-      <Container>
+      <Container className={s.container}>
         <div>Ошибка: {error}</div>
       </Container>
     );

@@ -10,8 +10,8 @@ import { Order } from "./components/Order/Order.jsx";
 import { Cart } from "./views/Cart/Cart.jsx";
 import { Card } from "./components/Card/Card.jsx";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
-import { Container } from "./views/Container/Container.jsx";
 import { Breadcrumbs } from "./components/Breadcrumbs/Breadcrumbs.jsx";
+import { Loader } from "./components/Loader/Loader.jsx";
 
 const router = createBrowserRouter([
   {
@@ -123,9 +123,7 @@ const App = () => {
 
   if (loading) {
     return (
-      <Container>
-        <div>Загрузка...</div>;
-      </Container>
+      <Loader />
     );
   }
 

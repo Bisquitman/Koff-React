@@ -8,7 +8,7 @@ import { clearProduct, fetchProduct } from "../../store/product/product.slice.js
 import { FavoriteButton } from "../FavoriteButton/FavoriteButton.jsx";
 import classNames from "classnames";
 import { AddCartButton } from "../AddCartButton/AddCartButton.jsx";
-import { Preloader } from "../Preloader/Preloader.jsx";
+import { Loader } from "../Loader/Loader.jsx";
 
 export const Card = () => {
   const { productId } = useParams();
@@ -25,9 +25,7 @@ export const Card = () => {
 
   if (loading) {
     return (
-      <Container>
-        <Preloader/>
-      </Container>
+      <Loader/>
     );
   }
   if (error) {
@@ -46,12 +44,12 @@ export const Card = () => {
     );
   }
 
-  return (
+  return !loading && data && !error ? (
     <section className={s.card}>
       <Container className={s.container}>
         <h2 className={s.title}>{data?.name}</h2>
 
-        <Slider images={data?.images} name={data?.name} />
+        <Slider images={data?.images} name={data?.name}/>
 
         <div className={s.info}>
           <p className={s.price}>{data?.price?.toLocaleString()}&nbsp;&#8381;</p>
@@ -73,10 +71,16 @@ export const Card = () => {
           </div>
 
           <div className={s.btns}>
-            <AddCartButton className={classNames(s.btn, "btn", "btn_filled")} id={data?.id} />
-            <FavoriteButton className={s.like} id={data?.id} />
+            <AddCartButton className={classNames(s.btn, "btn", "btn_filled")} id={data?.id}/>
+            <FavoriteButton className={s.like} id={data?.id}/>
           </div>
         </div>
+      </Container>
+    </section>
+  ) : (
+    <section className={_.product}>
+      <Container className={s.container}>
+        <h2 className={s.title}>Нет сведений</h2>
       </Container>
     </section>
   );

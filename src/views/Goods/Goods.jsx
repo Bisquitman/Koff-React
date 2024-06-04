@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { fetchProducts } from "../../store/products/products.slice.js";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { Pagination } from "../../components/Pagination/Pagination.jsx";
+import { Loader } from "../../components/Loader/Loader.jsx";
 
 export const Goods = () => {
   const dispatch = useDispatch();
@@ -36,9 +37,7 @@ export const Goods = () => {
 
   if (loading) {
     return (
-      <Container>
-        <div>Загрузка...</div>
-      </Container>
+      <Loader/>
     );
   }
   if (error) {
@@ -56,23 +55,25 @@ export const Goods = () => {
           {isFavoritePage ? "Избранное" : "Список товаров"}
         </h2>
 
-        {data?.length ? (
-          <>
-            <ul className={s.list}>
-              {data.map((item) => (
-                <li key={item.id}>
-                  <CardItem {...item} />
-                </li>
-              ))}
-            </ul>
+        {
+          !loading && data?.length ? (
+            <>
+              <ul className={s.list}>
+                {data.map((item) => (
+                  <li key={item.id}>
+                    <CardItem {...item} />
+                  </li>
+                ))}
+              </ul>
 
-            {pagination ? <Pagination pagination={pagination} /> : ""}
-          </>
-        ) : isFavoritePage ? (
-          <h3 className={s.empty}>В Избранном ничего нет...</h3>
-        ) : (
-          <h3 className={s.empty}>По вашему запросу ничего не найдено...</h3>
-        )}
+              {pagination ? <Pagination pagination={pagination}/> : ""}
+            </>
+          ) : isFavoritePage ? (
+            <h3 className={s.empty}>В Избранном ничего нет...</h3>
+          ) : (
+            <h3 className={s.empty}>По вашему запросу ничего не найдено...</h3>
+          )
+        }
       </Container>
     </section>
   );

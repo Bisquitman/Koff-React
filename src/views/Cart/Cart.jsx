@@ -1,14 +1,14 @@
 import s from "./Cart.module.scss";
-import { Container } from "../Container/Container.jsx";
-import { CartProducts } from "../../components/CartProducts/CartProducts.jsx";
-import { CartPlace } from "../../components/CartPlace/CartPlace.jsx";
-import { CartForm } from "../../components/CartForm/CartForm.jsx";
+import { Container } from "../Container/Container";
+import { CartProducts } from "../../components/CartProducts/CartProducts";
+import { CartPlace } from "../../components/CartPlace/CartPlace";
+import { CartForm } from "../../components/CartForm/CartForm";
 import { useSelector } from "react-redux";
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
 
-  if (!cart?.totalCount) {
+  if (!cart?.totalCount && !cart?.loadingFetch) {
     return (
       <section className={s.cart}>
         <Container className={s.container}>
@@ -22,8 +22,8 @@ export const Cart = () => {
     <section className={s.cart}>
       <Container className={s.container}>
         <h2 className={s.title}>Корзина</h2>
-        <CartProducts products={cart?.products} />
-        <CartPlace totalPrice={cart?.totalPrice} totalCount={cart?.totalCount} />
+        <CartProducts products={cart?.products} loadingFetch={cart?.loadingFetch} error={cart?.error} />
+        <CartPlace totalPrice={cart?.totalPrice} totalCount={cart?.totalCount} loadingFetch={cart?.loadingFetch} />
         <CartForm />
       </Container>
     </section>

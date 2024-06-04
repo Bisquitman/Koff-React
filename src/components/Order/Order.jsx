@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { clearOrder, fetchOrder } from "../../store/order/order.slice.js";
 import { fetchCart } from "../../store/cart/cart.slice.js";
+import { Loader } from "../Loader/Loader.jsx";
 
 export const Order = () => {
   const { orderId } = useParams();
@@ -25,15 +26,13 @@ export const Order = () => {
     };
   }, [dispatch, orderId]);
 
-  if (loading) {
+  if (!orderData && loading) {
     return (
       <>
         <section className={s.order}>
           <Container className={s.container}>
             <div className={s.body}>
-              <div className={s.header}>
-                <h2 className={s.title}>Загрузка...</h2>
-              </div>
+              <Loader/>
             </div>
           </Container>
         </section>
@@ -57,7 +56,7 @@ export const Order = () => {
     );
   }
 
-  if (!orderData) {
+  if (!orderData && !loading) {
     return (
       <>
         <section className={s.order}>
@@ -75,53 +74,56 @@ export const Order = () => {
 
   return (
     <>
-      <section className={s.order}>
-        <Container className={s.container}>
-          <div className={s.body}>
-            <div className={s.header}>
-              <h2 className={s.title}>Заказ успешно размещён</h2>
-              <div className={s.totalPrice}>{parseInt(orderData?.totalPrice).toLocaleString()}&nbsp;&#8381;</div>
-            </div>
-            <div className={s.number}>№&nbsp;{orderData?.id}</div>
+      {orderData && !loading && (
+        <section className={s.order}>
+          <Container className={s.container}>
+            <div className={s.body}>
+              <div className={s.header}>
+                <h2 className={s.title}>Заказ успешно размещён</h2>
+                <div className={s.totalPrice}>{parseInt(orderData?.totalPrice).toLocaleString()}&nbsp;&#8381;</div>
+              </div>
+              <div className={s.number}>№&nbsp;{orderData?.id}</div>
 
-            <div className={s.tableWrapper}>
-              <h3 className={s.subtitle}>Данные доставки</h3>
-              <table className={s.table}>
-                <tbody>
-                  <tr className={s.row}>
-                    <td className={s.field}>Получатель</td>
-                    <td className={s.value}>{orderData?.name}</td>
-                  </tr>
-                  <tr className={s.row}>
-                    <td className={s.field}>Телефон</td>
-                    <td className={s.value}>{orderData?.phone}</td>
-                  </tr>
-                  <tr className={s.row}>
-                    <td className={s.field}>E-mail</td>
-                    <td className={s.value}>{orderData?.email}</td>
-                  </tr>
-                  <tr className={s.row}>
-                    <td className={s.field}>Адрес доставки</td>
-                    <td className={s.value}>{orderData?.address}</td>
-                  </tr>
-                  <tr className={s.row}>
-                    <td className={s.field}>Способ оплаты</td>
-                    <td className={s.value}>{orderData?.paymentType === "card" ? "Картой при получении" : "Наличными при получении"}</td>
-                  </tr>
-                  <tr className={s.row}>
-                    <td className={s.field}>Способ получения</td>
-                    <td className={s.value}>{orderData?.deliveryType === "delivery" ? "Доставка" : "Самовывоз"}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+              <div className={s.tableWrapper}>
+                <h3 className={s.subtitle}>Данные доставки</h3>
+                <table className={s.table}>
+                  <tbody>
+                    <tr className={s.row}>
+                      <td className={s.field}>Получатель</td>
+                      <td className={s.value}>{orderData?.name}</td>
+                    </tr>
+                    <tr className={s.row}>
+                      <td className={s.field}>Телефон</td>
+                      <td className={s.value}>{orderData?.phone}</td>
+                    </tr>
+                    <tr className={s.row}>
+                      <td className={s.field}>E-mail</td>
+                      <td className={s.value}>{orderData?.email}</td>
+                    </tr>
+                    <tr className={s.row}>
+                      <td className={s.field}>Адрес доставки</td>
+                      <td className={s.value}>{orderData?.address}</td>
+                    </tr>
+                    <tr className={s.row}>
+                      <td className={s.field}>Способ оплаты</td>
+                      <td
+                        className={s.value}>{orderData?.paymentType === "card" ? "Картой при получении" : "Наличными при получении"}</td>
+                    </tr>
+                    <tr className={s.row}>
+                      <td className={s.field}>Способ получения</td>
+                      <td className={s.value}>{orderData?.deliveryType === "delivery" ? "Доставка" : "Самовывоз"}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
 
-            <Link className={classNames(s.btn, "btn", "btn_filled")} to="/">
-              На главную
-            </Link>
-          </div>
-        </Container>
-      </section>
+              <Link className={classNames(s.btn, "btn", "btn_filled")} to="/">
+                На главную
+              </Link>
+            </div>
+          </Container>
+        </section>)
+      }
     </>
   );
 };
